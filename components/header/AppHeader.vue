@@ -2,7 +2,7 @@
     <header :class="!topOfPage ? 'onScroll' : ''" class="header header-style-2 clearfix">
         <div class="row m-0 w-100">
             <b-navbar toggleable="lg">
-                <b-navbar-brand href="#">
+                <b-navbar-brand href="/">
                     <img src="/assets/images/logo.png" alt="logoImage" style="maxWidth: 170px">
                 </b-navbar-brand>
 
