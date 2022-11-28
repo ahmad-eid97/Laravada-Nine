@@ -6,80 +6,23 @@
             </h2>
         </div>
         <div class="row m-0">
-            <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
+            <div v-for="service in services.slice(0, 4)" :key="service.id" class="col-sm-6 col-lg-4 col-xl-3 p-0">
                 <div class="item">
                     <div class="image">
-                        <img class="img-fluid" src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-06-600x400.jpg" alt="">
+                        <img class="img-fluid" :src="service.image" :alt="service.title">
                         <div class="overlay">
                             <font-awesome-icon icon="fa-solid fa-bars-staggered" />
                         </div>
                     </div>
                     <h3>
-                        CONFERENCES & EVENTS
+                        {{service.title}}
                     </h3>
                     <p>
-                        Cras hendrerit purus a hendrerit semper
+                        {{service.short_description.substring(0, 200) + '...'}}
                     </p>
-                    <a href="#" class="btn">
+                    <nuxt-link :to="`/service/${service.id}`" class="btn">
                         VIEW DETAILS
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
-                <div class="item">
-                    <div class="image">
-                        <img class="img-fluid" src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-01-600x400.jpg" alt="">
-                        <div class="overlay">
-                            <font-awesome-icon icon="fa-solid fa-bars-staggered" />
-                        </div>
-                    </div>
-                    <h3>
-                        TRADE SHOW SERVICES
-                    </h3>
-                    <p>
-                        Fusce auctor tellus eget lectus malesuada
-                    </p>
-                    <a href="#" class="btn">
-                        VIEW DETAILS
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
-                <div class="item">
-                    <div class="image">
-                        <img class="img-fluid" src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-05-600x400.jpg" alt="">
-                        <div class="overlay">
-                            <font-awesome-icon icon="fa-solid fa-bars-staggered" />
-                        </div>
-                    </div>
-                    <h3>
-                        INCENTIVE PROGRAMS
-                    </h3>
-                    <p>
-                        Erat ante convallis est et euismod nunc
-                    </p>
-                    <a href="#" class="btn">
-                        VIEW DETAILS
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
-                <div class="item">
-                    <div class="image">
-                        <img class="img-fluid" src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl002-600x400.jpg" alt="">
-                        <div class="overlay">
-                            <font-awesome-icon icon="fa-solid fa-bars-staggered" />
-                        </div>
-                    </div>
-                    <h3>
-                        STRATEGIC MEETING MANAGEMENT
-                    </h3>
-                    <p>
-                        Vestibulum a aliquam mauris
-                    </p>
-                    <a href="#" class="btn">
-                        VIEW DETAILS
-                    </a>
+                    </nuxt-link>
                 </div>
             </div>
         </div>
@@ -88,7 +31,8 @@
 
 <script>
 export default {
-    name: 'AppHomeServices'
+    name: 'AppHomeServices',
+    props: ["services"]
 }
 </script>
 
@@ -144,6 +88,7 @@ export default {
     .services .image img {
         position: relative;
         z-index: 0;
+        height: 220px;
     }
     .services .image .overlay {
         position: absolute;

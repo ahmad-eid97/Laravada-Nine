@@ -7,38 +7,14 @@
             </h2>
         </div>
         <VueSlickCarousel :slidesToShow = "1" :slidesToScroll = "1" :arrows="true" :dots="false">
-            <div>
+            <div v-for="item in testimonials" :key="item.id">
                 <div class="item">
                     <div class="row m-0">
                         <p>
-                            “Praesent euismod risus ac erat suscipit consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse scelerisque metus quis lectus sodales molestie et et diam. Etiam sed aliquam mauris. Proin non ex justo. Vestibulum ac massa in ex blandit iaculis.”
+                            {{item.description}}
                         </p>
                         <h3>
-                            IT Group Senior Advisor
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="item">
-                    <div class="row m-0">
-                        <p>
-                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium sollicitudin nisl, ut hendrerit velit semper et. Nunc eget faucibus turpis. Phasellus pharetra diam ut nisi sagittis eleifend. Suspendisse non sapien lobortis, eleifend felis a, tincidunt lacus. Vestibulum malesuada porta laoreet – nulla erat, tincidunt id urna sed, commodo iaculis magna.”
-                        </p>
-                        <h3>
-                            Law Firm Executive Director
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="item">
-                    <div class="row m-0">
-                        <p>
-                            “I know I have said before but I must say it again – pellentesque habitant morbi tristique senectus et netus et malesuada! elementum non id lorem. Duis porttitor laoreet malesuada. Maecenas elementum, libero id tincidunt ornare, orci quam fringilla erat, sed ”
-                        </p>
-                        <h3>
-                            Nonprofit Organization President
+                            {{item.job}}
                         </h3>
                     </div>
                 </div>
@@ -52,6 +28,7 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
+    props: ["testimonials"],
     components: { VueSlickCarousel },
     name: 'AppHomeTestimonials'
 }

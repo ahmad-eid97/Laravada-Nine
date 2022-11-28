@@ -78,6 +78,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
     components: { VueSlickCarousel },
     name: 'AppHomeSlider',
+    props: ["sliderData"]
 }
 </script>
 
