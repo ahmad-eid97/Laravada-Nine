@@ -5,61 +5,23 @@
                 <h3>
                     NEWS & EVENTS
                 </h3>
-                <div class="row item mx-0">
+                <div v-for="blog in blogs.slice(0, 3)" :key="blog.id" class="row item mx-0">
                     <div class="col-auto">
-                        <img src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-13-300x300.jpg" width="83" height="83" alt="">
+                        <img :src="blog.image" width="83" height="83" :alt="blog.title">
                     </div>
                     <div class="col">
                         <h4>
                             <a href="#">
-                                Nulla Erat Tincidunt from Urna Sed Commodo
+                                {{blog.title}}
                             </a>
                         </h4>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium sollicitudin nisl, ut hendrerit velit…
+                            {{blog.short_description}}
                         </p>
-                        <a href="#" class="btn">
+                        <nuxt-link :to="`/blog/${blog.id}`" class="btn">
                             Read more
                             <font-awesome-icon icon="fa-solid fa-caret-right" />
-                        </a>
-                    </div>
-                </div>
-                <div class="row item mx-0">
-                    <div class="col-auto">
-                        <img src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-27-300x300.jpg" width="83" height="83" alt="">
-                    </div>
-                    <div class="col">
-                        <h4>
-                            <a href="#">
-                                Lorem Ipsum Dolor Con 2018 
-                            </a>
-                        </h4>
-                        <p>
-                            Cras hendrerit, purus a hendrerit semper, erat ante convallis est, et euismod nunc velit sit…
-                        </p>
-                        <a href="#" class="btn">
-                            Read more
-                            <font-awesome-icon icon="fa-solid fa-caret-right" />
-                        </a>
-                    </div>
-                </div>
-                <div class="row item mx-0">
-                    <div class="col-auto">
-                        <img src="https://the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-29-300x300.jpg" width="83" height="83" alt="">
-                    </div>
-                    <div class="col">
-                        <h4>
-                            <a href="#">
-                                2nd International Conference on Lorem Ipsum Dolor Glavrida
-                            </a>
-                        </h4>
-                        <p>
-                            Aenean tempor sagittis nibh. Proin a commodo erat. Curabitur justo mi, sodales sed consequat ut,…
-                        </p>
-                        <a href="#" class="btn">
-                            Read more
-                            <font-awesome-icon icon="fa-solid fa-caret-right" />
-                        </a>
+                        </nuxt-link>
                     </div>
                 </div>
             </div>
@@ -102,6 +64,7 @@
 <script>
 export default {
     name: 'AppHomeNews',
+    props: ["blogs"],
     data(){
         return{
             items: [

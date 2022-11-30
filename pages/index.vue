@@ -4,7 +4,7 @@
     <app-home-what></app-home-what>
     <app-home-services :services="services"></app-home-services>
     <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
-    <app-home-news></app-home-news>
+    <app-home-news :blogs="blogs"></app-home-news>
   </div>
 </template>
 
@@ -29,11 +29,14 @@ export default {
 
     const services = await $axios.get('/services');
 
+    const blogs = await $axios.get('/blogs?latest=1');
+
     const testimonials = await $axios.get('/testimonials');
 
     return {
       sliderData: sliderData.data.data.sliders,
       services: services.data.data.services,
+      blogs: blogs.data.data.blogs,
       testimonials: testimonials.data.data.testimonials,
     }
   }
