@@ -6,7 +6,7 @@
         <div class="breadcrumb">
           <router-link to="/"> Home </router-link>
           <a href="">
-            <font-awesome-icon icon="fa-solid fa-angles-right" />
+            <i class="fa-solid fa-angles-right"></i>
           </a>
           <a href="#"> Contact Us </a>
         </div>
