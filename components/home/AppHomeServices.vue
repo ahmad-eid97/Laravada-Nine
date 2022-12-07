@@ -3,7 +3,7 @@
     <div class="row m-0 justify-content-center">
       <h2>WHAT WE DO</h2>
     </div>
-    <div class="row m-0">
+    <div class="row m-0" v-if="services.length >= 1">
       <div
         v-for="service in services.slice(0, 4)"
         :key="service.id"

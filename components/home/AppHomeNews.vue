@@ -1,7 +1,7 @@
 <template>
   <section class="news">
     <div class="row m-0">
-      <div class="col-lg-6 p-0">
+      <div class="col-lg-6 p-0" v-if="blogs.length >= 1">
         <h3>NEWS & EVENTS</h3>
         <div
           v-for="blog in blogs.slice(0, 3)"
@@ -33,7 +33,10 @@
           <CoolLightBox :items="items" :index="index" @close="index = null">
           </CoolLightBox>
           <div class="images-wrapper p-0">
-            <div class="row justify-content-between m-0">
+            <div
+              class="row justify-content-between m-0"
+              v-if="items.length >= 1"
+            >
               <div
                 class="col-auto p-0"
                 v-for="(image, imageIndex) in items"
