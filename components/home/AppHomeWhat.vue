@@ -48,11 +48,19 @@
       </div>
     </div>
     <div class="row m-0 btns justify-content-center">
-      <a href="#" class="btn-right">
+      <a
+        href="#"
+        class="btn-right"
+        :class="$i18n.locale === 'ar' ? 'arabic' : ''"
+      >
         <i class="fa-solid fa-circle-info"></i>
         ABOUT AGENCY
       </a>
-      <a href="#" class="btn-left">
+      <a
+        href="#"
+        class="btn-left"
+        :class="$i18n.locale === 'ar' ? 'arabic' : ''"
+      >
         <i class="fa-solid fa-comment-dots"></i>
         CONTACT US
       </a>
@@ -140,7 +148,9 @@ export default {
   text-align: center;
   color: rgb(231, 57, 53);
   text-decoration: none;
-  border-right: none;
+  &.arabic {
+    border-radius: 0px 100px 100px 0px;
+  }
 }
 @include xs {
   .what .btn-right {
@@ -157,6 +167,9 @@ export default {
   text-align: center;
   color: rgb(231, 57, 53);
   text-decoration: none;
+  &.arabic {
+    border-radius: 100px 0 0 100px;
+  }
 }
 
 .what .btns {

@@ -60,7 +60,7 @@
             <div class="row">
               <div class="col-lg-6 col-md-6">
                 <ul
-                  class="about-list text-start"
+                  class="about-list"
                   v-if="
                     experienceSection.find(
                       (one) => one.key === 'experience_title_list'
@@ -81,13 +81,14 @@
                       )"
                     :key="item"
                   >
-                    <i class="fa-solid fa-circle-check"></i> {{ item }}
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>{{ item }}</span>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6 col-md-6">
                 <ul
-                  class="about-list about-list-2 text-start"
+                  class="about-list about-list-2"
                   v-if="
                     experienceSection.find(
                       (one) => one.key === 'experience_title_list'
@@ -112,7 +113,8 @@
                       )"
                     :key="item"
                   >
-                    <i class="fa-solid fa-circle-check"></i> {{ item }}
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>{{ item }}</span>
                   </li>
                 </ul>
               </div>
@@ -182,7 +184,7 @@ export default {
 }
 .about-play img {
   border-radius: 30px;
-  max-width: 100%;
+  width: 100%;
 }
 .about-play .about-play-content {
   position: absolute;
@@ -254,7 +256,8 @@ export default {
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 42px;
-  text-align: left;
+  /* text-align: left; */
+  text-align: unset !important;
   margin-top: 10px;
   margin-right: 0px;
   margin-bottom: 15px;
@@ -264,9 +267,10 @@ export default {
 .about-area .section-title p {
   padding-top: 10px;
   margin-bottom: 0;
-  max-width: 530px;
+  /* max-width: 530px; */
   color: #444;
   margin-bottom: 20px;
+  text-align: unset !important;
 }
 .about-area .about-content .about-list {
   list-style: none;
@@ -281,24 +285,23 @@ export default {
   font-weight: 500;
   -webkit-transition: 0.7s;
   transition: 0.7s;
-  padding-left: 35px;
   position: relative;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   font-size: 15px;
 }
 .about-area .about-content .about-list li i {
-  font-size: 26px;
+  font-size: 20px;
   color: var(--main-color);
-  position: absolute;
-  left: 0;
-  top: -2px;
-  margin-right: 5px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+.about-area .about-content .about-list li span {
+  padding: 0 10px;
 }
 .about-area .about-content .about-content-text {
   margin-top: 20px;
   margin-bottom: 0;
+  text-align: unset !important;
 }
 </style>

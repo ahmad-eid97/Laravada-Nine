@@ -22,7 +22,6 @@
             </p>
             <nuxt-link :to="`/blog/${blog.id}`" class="btn">
               Read more
-              <i class="fa-solid fa-caret-right"></i>
             </nuxt-link>
           </div>
         </div>
@@ -147,7 +146,6 @@ export default {
   border: none;
   padding: 0;
   color: rgb(36, 46, 53);
-  float: left;
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
