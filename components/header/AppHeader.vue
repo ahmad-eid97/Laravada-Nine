@@ -40,6 +40,8 @@
               >Testimonials</b-nav-item
             >
             <b-nav-item :to="localePath('/blogs')">News</b-nav-item>
+            <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
+            <b-nav-item :to="localePath('/events')">Events</b-nav-item>
             <b-nav-item :to="localePath('/contact')">Contact</b-nav-item>
           </b-navbar-nav>
           <div class="d-flex align-items-center quote_area">
@@ -48,6 +50,9 @@
               <i class="fa-solid fa-angle-right"></i>
             </a>
             <lang-switch></lang-switch>
+            <div v-if="$store.state.user" class="logout" @click="logout">
+              <i class="fa-regular fa-right-from-bracket"></i>
+            </div>
           </div>
         </b-collapse>
       </b-navbar>
@@ -72,6 +77,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      this.$router.push(this.localePath("/login"));
+    },
     handleScroll() {
       if (window.pageYOffset > 30) {
         if (this.topOfPage) this.topOfPage = false;
@@ -92,6 +103,17 @@ header {
   position: fixed;
 }
 
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: var(--main-color);
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
 nav {
   padding: 0 60px 0 !important;
 }
