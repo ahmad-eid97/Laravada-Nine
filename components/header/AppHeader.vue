@@ -25,19 +25,30 @@
           />
         </b-navbar-brand>
 
-        <b-navbar-toggle target="navbar-toggle-collapse">
-          <template #default="{ expanded }">
-            <span
-              class="menu-trigger"
-              :class="expanded ? 'active' : ''"
-              id="menu03"
-            >
-              <p></p>
-              <p></p>
-              <p></p>
-            </span>
-          </template>
-        </b-navbar-toggle>
+        <div class="d-flex align-items-center smallScr">
+          <lang-switch></lang-switch>
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
+            <span>{{ $store.state.cartItems.length }}</span>
+            <i class="fa-regular fa-cart-plus"></i>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+
+          <b-navbar-toggle target="navbar-toggle-collapse">
+            <template #default="{ expanded }">
+              <span
+                class="menu-trigger"
+                :class="expanded ? 'active' : ''"
+                id="menu03"
+              >
+                <p></p>
+                <p></p>
+                <p></p>
+              </span>
+            </template>
+          </b-navbar-toggle>
+        </div>
 
         <b-collapse
           id="navbar-toggle-collapse"
@@ -55,22 +66,30 @@
             <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
             <b-nav-item :to="localePath('/events')">Events</b-nav-item>
             <b-nav-item :to="localePath('/contact')">Contact</b-nav-item>
+            <b-nav-item
+              :to="localePath('/login')"
+              v-if="$store.state.user"
+              @click="logout"
+              >Logout</b-nav-item
+            >
           </b-navbar-nav>
           <div class="d-flex align-items-center quote_area">
             <a href="#" class="btn">
               REQUEST A QUOTE
               <i class="fa-solid fa-angle-right"></i>
             </a>
-            <lang-switch></lang-switch>
-            <div class="m-0 cartIcon" @click="openCart = !openCart">
-              <span>{{ $store.state.cartItems.length }}</span>
-              <i class="fa-regular fa-cart-plus"></i>
-            </div>
-            <div v-if="$store.state.user" class="logout" @click="logout">
-              <i class="fa-regular fa-right-from-bracket"></i>
-            </div>
           </div>
         </b-collapse>
+        <div class="d-flex align-items-center largeScr">
+          <lang-switch></lang-switch>
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
+            <span>{{ $store.state.cartItems.length }}</span>
+            <i class="fa-regular fa-cart-plus"></i>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+        </div>
       </b-navbar>
     </div>
   </header>
@@ -183,6 +202,9 @@ header {
     &.opened {
       transform: translateX(0);
     }
+    @include xs {
+      width: 350px;
+    }
   }
   .cartIcon {
     border: 1px solid #fff;
@@ -193,6 +215,7 @@ header {
     place-items: center;
     cursor: pointer;
     position: relative;
+    margin: 0 15px !important;
     span {
       position: absolute;
       top: -15px;
@@ -206,9 +229,17 @@ header {
       place-content: center;
       font-size: 1.2rem;
       border: 1px solid #fff;
+      @include sm {
+        font-size: 1rem;
+      }
     }
     i {
       color: #fff;
+    }
+    @include sm {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px !important;
     }
     &:hover {
       background-color: var(--main-color);
@@ -230,12 +261,35 @@ header {
   place-items: center;
   font-size: 1.2rem;
   cursor: pointer;
+  @include md {
+    display: none;
+  }
+}
+.smallScr {
+  align-items: center;
+  display: none !important;
+  @include md {
+    display: flex !important;
+  }
+}
+.largeScr {
+  align-items: center;
+  display: flex !important;
+  @include md {
+    display: none !important;
+  }
 }
 nav {
   padding: 0 60px 0 !important;
+  @include md {
+    padding: 20px 10px !important;
+  }
 }
 .onScroll nav {
   padding: 0 60px 0 !important;
+  @include sm {
+    padding: 20px 10px !important;
+  }
 }
 .onScroll nav .nav-item {
   padding: 20px 10px;
@@ -243,14 +297,17 @@ nav {
 .navbar-brand {
   width: 180px;
   transition: all 0.3s linear;
+  @include sm {
+    width: 150px;
+  }
 }
 .navbar-brand img {
   max-width: 100%;
   transition: all 0.3s linear;
 }
-.onScroll .navbar-brand img {
+/* .onScroll .navbar-brand img {
   max-width: 70px;
-}
+} */
 
 .navbar .nav-item {
   margin: 0 1px;
@@ -285,6 +342,7 @@ nav {
   border: 1px solid #fff;
   outline: none;
   box-shadow: none !important;
+  margin: 0;
 }
 .menu-trigger p {
   width: 30px;
