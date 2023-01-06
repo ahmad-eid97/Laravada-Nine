@@ -347,7 +347,7 @@ nav {
 .navbar .nav-item {
   margin: 0 1px;
   position: relative;
-  padding: 34px 10px;
+  padding: 24px 10px;
   transition: all 0.3s linear;
 }
 .navbar .nav-item.active,

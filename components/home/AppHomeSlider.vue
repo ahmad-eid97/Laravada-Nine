@@ -93,7 +93,7 @@ export default {
 
 <style lang="scss">
 .intro {
-  margin-top: 100px;
+  margin-top: 80px;
   padding: 0;
 }
 .intro .item {

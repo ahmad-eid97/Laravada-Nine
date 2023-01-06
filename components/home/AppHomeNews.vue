@@ -29,22 +29,26 @@
       <div class="col-lg-6">
         <h3>OUR GALLERY FEED</h3>
         <div class="row m-0">
-          <CoolLightBox :items="items" :index="index" @close="index = null">
+          <CoolLightBox
+            :items="gallery.map((image) => image.image)"
+            :index="index"
+            @close="index = null"
+          >
           </CoolLightBox>
           <div class="images-wrapper p-0">
             <div
-              class="row justify-content-between m-0"
+              class="row justify-content-center m-0"
               v-if="items.length >= 1"
             >
               <div
                 class="col-auto p-0"
-                v-for="(image, imageIndex) in items"
+                v-for="(image, imageIndex) in gallery"
                 :key="imageIndex"
                 @click="index = imageIndex"
               >
                 <div
                   class="image"
-                  :style="{ backgroundImage: 'url(' + image + ')' }"
+                  :style="{ backgroundImage: 'url(' + image.image + ')' }"
                 >
                   <div class="rollover">
                     <div class="rollover-content">
@@ -66,7 +70,7 @@
 <script>
 export default {
   name: "AppHomeNews",
-  props: ["blogs"],
+  props: ["blogs", "gallery"],
   data() {
     return {
       items: [
