@@ -7,66 +7,22 @@
       :fade="true"
       :dots="false"
     >
-      <div class="item item-1">
+      <div
+        class="item item-1"
+        v-for="slide in slides"
+        :key="slide.id"
+        :style="{ background: `url(${slide.background})` }"
+      >
         <div class="overlay"></div>
         <div class="row m-0 justify-content-center align-items-center h-100">
           <div class="content">
             <div class="row m-0 align-items-center">
               <div class="col">
                 <h1>
-                  Guard your time fiercely.<br />Be generous with it, but be<br />intentional
-                  about it.
+                  {{ slide.title }}
                 </h1>
                 <p>
-                  Aliquam aliquam auctor lorem, quis dictum leo sodales non.
-                  Mauris ornare<br />mi est, ut sodales nunc suscipit at.
-                </p>
-              </div>
-              <div class="col-auto">
-                <img class="img-fluid" src="/assets/images/logo2.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="item item-2">
-        <div class="overlay"></div>
-        <div class="row m-0 justify-content-center align-items-center h-100">
-          <div class="content">
-            <div class="row m-0 align-items-center">
-              <div class="col">
-                <h1>
-                  Nothing ever comes to one,<br />that is worth having,
-                  except<br />as a result of hard work.
-                </h1>
-                <p>
-                  Pellentesque habitant morbi tristique senectus et netus et
-                  malesuada fames<br />ac turpis egestas. Suspendisse
-                  scelerisque metus quis lectus sodales!
-                </p>
-              </div>
-              <div class="col-auto">
-                <img class="img-fluid" src="/assets/images/logo2.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item item-3">
-        <div class="overlay"></div>
-        <div class="row m-0 justify-content-center align-items-center h-100">
-          <div class="content">
-            <div class="row m-0 align-items-center">
-              <div class="col">
-                <h1>
-                  The art of being wise is<br />the art of knowing what<br />to
-                  overlook.
-                </h1>
-                <p>
-                  Ut orci nisl, facilisis id magna nec, maximus vestibulum
-                  justo.<br />Quisque malesuada, urna id aliquam, mi tellus
-                  commodo mauris.
+                  {{ slide.description }}
                 </p>
               </div>
               <div class="col-auto">
@@ -87,7 +43,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   components: { VueSlickCarousel },
   name: "AppHomeSlider",
-  props: ["sliderData"],
+  props: ["slides"],
 };
 </script>
 
@@ -97,11 +53,13 @@ export default {
   padding: 0;
 }
 .intro .item {
-  min-height: 500px;
+  min-height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 .intro .item-1 {
   background-image: url(//the7.io/event-agency/wp-content/uploads/sites/48/2018/06/sl-event-04.jpg);
@@ -167,6 +125,7 @@ export default {
   position: relative;
   text-align: start;
   padding: 15px 0 0;
+  max-width: 700px;
 }
 .intro .item .content .btn {
   background-color: rgb(117, 179, 37);
