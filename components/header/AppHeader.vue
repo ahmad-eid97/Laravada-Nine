@@ -88,7 +88,7 @@
             </b-nav-item>
           </b-navbar-nav>
           <div class="d-flex align-items-center quote_area">
-            <a href="#" class="btn">
+            <a href="#" class="btn startBtn">
               REQUEST A QUOTE
               <i class="fa-solid fa-angle-right"></i>
             </a>
@@ -334,9 +334,9 @@ nav {
   }
 }
 .onScroll nav {
-  padding: 0 60px 0 !important;
+  padding: 5px 20px !important;
   @include sm {
-    padding: 20px 10px !important;
+    padding: 5px 10px !important;
   }
 }
 .onScroll nav .nav-item {
@@ -413,18 +413,23 @@ nav {
     transform: translateY(-10px);
   }
   .navbar-nav {
-    padding: 20px 0;
+    padding: 20px 0 0;
     transform: translateY(-10px);
   }
   .navbar-nav li {
     padding: 5px 0 !important;
   }
   .navbar-nav li.nav-item a {
-    color: #fff !important;
+    /* color: #fff !important; */
     padding: 5px 20px;
   }
-  .btn {
+  .startBtn {
     display: none;
+  }
+  .dropdownBtn {
+    button {
+      color: #fff !important;
+    }
   }
 }
 .dropdownBtn {
@@ -438,9 +443,13 @@ nav {
     font-weight: 400 !important;
     box-shadow: none !important;
     border: none !important;
-    min-width: 60px !important;
+    min-width: 100% !important;
+    min-height: 30px;
     position: relative;
     top: -3px;
+    &:hover {
+      color: #fff !important;
+    }
   }
   .dropdown-menu {
     top: 40px !important;

@@ -30,7 +30,7 @@
         <h3>OUR GALLERY FEED</h3>
         <div class="row m-0">
           <CoolLightBox
-            :items="gallery.map((image) => image.image)"
+            :items="gallery[0].images"
             :index="index"
             @close="index = null"
           >
@@ -42,19 +42,19 @@
             >
               <div
                 class="col-auto p-0"
-                v-for="(image, imageIndex) in gallery"
+                v-for="(image, imageIndex) in gallery[0].images"
                 :key="imageIndex"
                 @click="index = imageIndex"
               >
                 <div
                   class="image"
-                  :style="{ backgroundImage: 'url(' + image.image + ')' }"
+                  :style="{ backgroundImage: 'url(' + image + ')' }"
                 >
                   <div class="rollover">
                     <div class="rollover-content">
-                      <a class="rollover-link" href="#">
+                      <span class="rollover-link">
                         <i class="fa-solid fa-magnifying-glass-plus"></i>
-                      </a>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -180,7 +180,8 @@ export default {
 .news .image {
   height: 140px;
   width: 140px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   position: relative;
   margin-bottom: 2px;
 }
@@ -220,6 +221,7 @@ export default {
 .news .image .rollover-content .rollover-link {
   color: rgb(255, 255, 255);
   font-size: 30px;
+  cursor: pointer;
 }
 .news .image .rollover-content h4 a {
   font-size: 18px;
