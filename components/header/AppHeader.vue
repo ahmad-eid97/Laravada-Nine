@@ -88,8 +88,12 @@
             </b-nav-item>
           </b-navbar-nav>
           <div class="d-flex align-items-center quote_area">
-            <a href="#" class="btn startBtn">
-              REQUEST A QUOTE
+            <a
+              href="/qoutation"
+              class="btn startBtn"
+              @click="$router.push('/qoutation')"
+            >
+              GET QOUTATION
               <i class="fa-solid fa-angle-right"></i>
             </a>
           </div>
