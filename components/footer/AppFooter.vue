@@ -3,22 +3,20 @@
     <subscribe />
     <div class="copyrights">
       <img
-        src="/assets/images/logo2.png"
+        :src="
+          $store.state.websiteSettings.find((one) => one.key === 'logo')
+            .plain_value
+        "
         alt="logoImage"
         style="width: 200px !important"
       />
       <ul class="footerLinks">
-        <li>
-          <nuxt-link :to="localePath('/contact')">Contact</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="localePath('/faq')">FAQs</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="localePath('/policy')">Privacy Policy</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="localePath('/terms')">Terms & Conditions</nuxt-link>
+        <li v-for="page in $store.state.footerPages" :key="page.id">
+          <b-nav-item
+            :to="localePath(generatePagePath(page.id))"
+            v-if="page.status"
+            >{{ page.name }}</b-nav-item
+          >
         </li>
       </ul>
       <p>© Powered By: Rail Coder 2022-2023. All rights reserved.</p>
@@ -36,12 +34,34 @@ export default {
     return {};
   },
   beforeMount() {},
-  methods: {},
+  methods: {
+    generatePagePath(id) {
+      switch (id) {
+        case 1:
+          return "/about";
+        case 2:
+          return "/contact";
+        case 3:
+          return "/terms";
+        case 4:
+          return "/policy";
+      }
+    },
+  },
 };
 </script>
-<style>
+<style lang="scss">
 footer {
   background-color: #20262a;
+}
+.footerLinks {
+  list-style: none;
+  li {
+    color: #fff;
+    a.nuxt-link-active {
+      color: var(--main-color);
+    }
+  }
 }
 footer .copyrights {
   padding: 20px 65px;
