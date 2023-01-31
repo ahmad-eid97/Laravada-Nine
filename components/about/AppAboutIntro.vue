@@ -89,6 +89,7 @@ export default {
 .about-intro .clients-slider-img img {
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 .about-intro .clients-slider-img .clients-slider-circle {
   position: absolute;
