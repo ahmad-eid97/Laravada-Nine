@@ -5,8 +5,12 @@
     <app-home-what></app-home-what>
     <app-home-services :services="services"></app-home-services>
     <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
-    <app-home-activities :activities="activities" />
-    <app-home-steps :steps="steps" />
+    <div v-if="activities.status">
+      <app-home-activities :activities="activities.data" />
+    </div>
+    <div v-if="steps.status">
+      <app-home-steps :steps="steps.data" />
+    </div>
     <app-home-news :blogs="blogs" :gallery="gallery"></app-home-news>
     <SocialChat :attendants="attendants">
       <p slot="header">Click one of our representatives below to chat.</p>
@@ -133,8 +137,8 @@ export default {
       blogs: blogs.data.data.blogs,
       testimonials: testimonials.data.data.testimonials,
       gallery: galleries.data.data.galleries,
-      activities: activities.data.data,
-      steps: steps.data.data,
+      activities: activities.data,
+      steps: steps.data,
     };
   },
 };
