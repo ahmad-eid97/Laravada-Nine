@@ -5,10 +5,10 @@
     <app-home-what></app-home-what>
     <app-home-services :services="services"></app-home-services>
     <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
-    <div v-if="activities.status">
+    <div v-if="$store.state.sectionsStatus.activities">
       <app-home-activities :activities="activities.data" />
     </div>
-    <div v-if="steps.status">
+    <div v-if="$store.state.sectionsStatus.steps">
       <app-home-steps :steps="steps.data" />
     </div>
     <app-home-news :blogs="blogs" :gallery="gallery"></app-home-news>
